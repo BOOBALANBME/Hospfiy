@@ -1,0 +1,6 @@
+{
+  "name": "Hospify - Biomedical & Smart Hospital Management System",
+  "description": "Comprehensive internal hospital and biomedical management system by Boobalan S (BME) for real-time bed tracking across 15 wards, biomedical medical device testing, admissions, clinical records, and patient care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

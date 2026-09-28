@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgMaskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="50%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="crossMaskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="pulseMaskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="shadowMask" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Full bleed background for maskable circle/squircle clipping -->
+  <rect width="512" height="512" fill="url(#bgMaskGrad)" />
+
+  <!-- Safe Zone Scaled Content (scaled to fit within 75% safe area ~384px center) -->
+  <g transform="translate(64, 64) scale(0.75)">
+    <!-- Outer Glow Ring -->
+    <rect x="24" y="24" width="464" height="464" rx="92" fill="none" stroke="#38bdf8" stroke-width="4" stroke-opacity="0.3" />
+
+    <!-- Medical Cross Group -->
+    <g filter="url(#shadowMask)">
+      <!-- Vertical Bar -->
+      <rect x="206" y="96" width="100" height="320" rx="28" fill="url(#crossMaskGrad)" />
+      <!-- Horizontal Bar -->
+      <rect x="96" y="206" width="320" height="100" rx="28" fill="url(#crossMaskGrad)" />
+    </g>
+
+    <!-- High-Tech Medical Pulse ECG Line -->
+    <path d="M 80 256 L 170 256 L 205 180 L 235 330 L 275 130 L 305 290 L 335 230 L 355 256 L 432 256"
+          fill="none"
+          stroke="url(#pulseMaskGrad)"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+    <circle cx="275" cy="130" r="10" fill="#38bdf8" />
+    <circle cx="235" cy="330" r="10" fill="#10b981" />
+  </g>
+</svg>
