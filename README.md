@@ -37,3 +37,13 @@ To enable the clinical assistant, pass `GEMINI_API_KEY` from a secret store at r
 | `GEMINI_API_KEY` | unset | Optional server-side Gemini access |
 
 The frontend uses same-origin `/api` routes, so no provider-specific URL configuration is needed. The `/api/health` endpoint can be used by a container platform for health checks.
+
+## Publish on Google Cloud Run
+
+Install and authenticate the Google Cloud CLI, select a billing-enabled project, then run:
+
+```sh
+./scripts/deploy-cloud-run.sh YOUR_PROJECT_ID
+```
+
+An optional second argument selects a region, for example `asia-south1`. The script enables the required Google Cloud services, creates a private storage bucket for the application data, deploys the service with public access, and prints its separate public URL. It limits the service to one instance because Hospify currently uses a single file-backed database.

@@ -1,0 +1,7 @@
+.git
+.netlify
+.env
+dist
+node_modules
+data/*.json
+npm-debug.log*
