@@ -7,12 +7,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = 3000;
-const DB_FILE_PATH = path.join(process.cwd(), 'data', 'cloud_hospital_db.json');
+const port = Number.parseInt(process.env.PORT || '3000', 10);
+const host = process.env.HOST || '0.0.0.0';
+const dataDirectory = path.resolve(process.env.DATA_DIR || path.join(process.cwd(), 'data'));
+const DB_FILE_PATH = path.join(dataDirectory, 'cloud_hospital_db.json');
+
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  throw new Error('PORT must be an integer between 1 and 65535.');
+}
 
 // Ensure data directory exists
-if (!fs.existsSync(path.join(process.cwd(), 'data'))) {
-  fs.mkdirSync(path.join(process.cwd(), 'data'), { recursive: true });
+if (!fs.existsSync(dataDirectory)) {
+  fs.mkdirSync(dataDirectory, { recursive: true });
 }
 
 // In-memory + persisted cloud database
@@ -218,8 +224,8 @@ Provide a concise, scientifically accurate, empathetic response with actionable 
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Hospify PWA server running on http://0.0.0.0:${PORT}`);
+  app.listen(port, host, () => {
+    console.log(`Hospify PWA server running on http://${host}:${port}`);
   });
 }
 
